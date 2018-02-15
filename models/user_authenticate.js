@@ -1,15 +1,15 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var user_authenticate = sequelize.define('user_authenticate', {
+  const user_authenticate = sequelize.define('user_authenticates', {
     userid: DataTypes.STRING,
     password: DataTypes.STRING,
-    token: DataTypes.STRING
+    token: DataTypes.STRING,
   }, {
     classMethods: {
-      associate: function(models) {
+      associate(models) {
         // associations can be defined here
-      }
-    }
+      },
+    },
   });
   return user_authenticate;
 };
