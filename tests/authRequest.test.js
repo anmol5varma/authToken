@@ -34,6 +34,7 @@ describe('Testing the hapi server for GET request', () => {
     const options = {
       method: 'POST',
       url: '/auth',
+      payload: { userName: 'anmol5varma', userPassword: 'abcd' },
     };
     Server.inject(options, (response) => {
       expect(response.result.statusCode).toBe(200);
