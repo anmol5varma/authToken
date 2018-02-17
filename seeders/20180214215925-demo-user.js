@@ -9,7 +9,13 @@ module.exports = {
       Example: */
     queryInterface.bulkInsert('user_authenticates', [{
       userid: 'anmol5varma',
-      password: 'abcd',
+      password: 'wearethebest2D%',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userid: 'anmolvarma',
+      password: 'Scooby!23',
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {}),
