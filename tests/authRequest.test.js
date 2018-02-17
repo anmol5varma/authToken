@@ -9,8 +9,17 @@ describe('Testing the hapi server for GET request', () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     }).then(() => {
-      done();
-    }).catch();
+      Models.user_authenticates.create({
+        userid: 'anmvarma',
+        password: 'Scooby!23',
+        token: '1234',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    })
+      .then(() => {
+        done();
+      }).catch();
   });
 
   afterEach((done) => {
@@ -84,20 +93,15 @@ describe('Testing the hapi server for GET request', () => {
     });
   });
 
-  test('USer trying to login after logging in', (done) => {
+  test('User trying to login after logging in', (done) => {
     const options = {
       method: 'POST',
       url: '/auth',
       payload: {
-        userName: 'anmolvarma',
+        userName: 'anmvarma',
         userPassword: 'Scooby!23',
       },
     };
-    Server.inject(options, (response) => {
-      console.log(response.result);
-      expect(response.result.statusCode).toBe(200);
-      done();
-    });
     Server.inject(options, (response) => {
       console.log(response.result);
       expect(response.result.message).toBe('User already logged in');
