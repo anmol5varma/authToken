@@ -20,9 +20,9 @@ module.exports = [
       console.log(username, accessToken);
       return deleteUserToken(username, accessToken).then((userEntry) => {
         if (userEntry[0] === 1) {
-          response({ message: 'User loggedout', statusCode: 200 });
+          return response({ message: 'User loggedout', statusCode: 200 });
         }
-        response({ message: 'Invalid request', statusCode: 401 });
+        return response({ message: 'Invalid request', statusCode: 401 });
       }).catch((err) => {
         response({ message: err.message, statusCode: 500 }).header('token', null);
       });

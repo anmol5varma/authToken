@@ -18,12 +18,10 @@ module.exports = [
       console.log(username, accessToken);
       return fetchUserEntry(username, accessToken).then((userEntry) => {
         if (userEntry && accessToken) {
-          response({ message: 'User is verified', statusCode: 200 });
+          return response({ message: 'User is verified', statusCode: 200 });
         }
-        response({ message: 'User is not verified. Redirect to login page', statusCode: 401 });
-      }).catch((err) => {
-        response({ message: err.message, statusCode: 500 }).header('token', null);
-      });
+        return response({ message: 'User is not verified. Redirect to login page', statusCode: 401 });
+      }).catch(err => response({ message: err.message, statusCode: 500 }).header('token', null));
     },
   },
 ];

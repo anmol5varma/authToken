@@ -16,10 +16,9 @@ describe('Testing the hapi server for GET request', () => {
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-    })
-      .then(() => {
-        done();
-      }).catch();
+    }).then(() => {
+      done();
+    }).catch();
   });
 
   afterEach((done) => {
