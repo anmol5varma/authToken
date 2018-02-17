@@ -79,7 +79,28 @@ describe('Testing the hapi server for GET request', () => {
     };
     Server.inject(options, (response) => {
       console.log(response.result);
-      expect(typeof response.result.message).toBe('Invalid username or password');
+      expect(response.result.message).toBe('Invalid username or password');
+      done();
+    });
+  });
+
+  test('USer trying to login after logging in', (done) => {
+    const options = {
+      method: 'POST',
+      url: '/auth',
+      payload: {
+        userName: 'anmolvarma',
+        userPassword: 'Scooby!23',
+      },
+    };
+    Server.inject(options, (response) => {
+      console.log(response.result);
+      expect(response.result.statusCode).toBe(200);
+      done();
+    });
+    Server.inject(options, (response) => {
+      console.log(response.result);
+      expect(response.result.message).toBe('User already logged in');
       done();
     });
   });
