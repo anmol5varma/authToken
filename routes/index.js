@@ -1,5 +1,6 @@
-const auth = require('./authRequest');
-const verify = require('./verifyRequest');
+const generateToken = require('./authRequest');
+const verifyToken = require('./verifyRequest');
+const deleteToken = require('./deleteRequest');
 
 // require all the request files and export them in an array
-module.exports = [].concat(auth, verify);
+module.exports = [].concat(generateToken, verifyToken, deleteToken);
